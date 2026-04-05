@@ -154,3 +154,22 @@ body {
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
+/* ========= Hide Scrollbar (for nav) ========= */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========= Confetti burst ========= */
+@keyframes confettiBurst {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  50% { opacity: 1; }
+  100% { transform: scale(1.5) rotate(360deg); opacity: 0; }
+}
+.confetti-burst {
+  animation: confettiBurst 0.8s ease-out forwards;
+}

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, MessageCircle, Sparkles, Clock, Heart } from 'lucide-react'
+import { BookOpen, MessageCircle, Sparkles, Clock, Heart, CalendarHeart, HelpCircle, HeartHandshake } from 'lucide-react'
 import { JourneyProvider } from './context/JourneyContext'
 import { useJourney } from './hooks/useJourney'
 import { useSectionTracker } from './hooks/useSectionTracker'
@@ -9,6 +9,9 @@ import Hero from './components/Hero/Hero'
 import Timeline from './components/Timeline/Timeline'
 import Messages from './components/Messages/Messages'
 import Scenarios from './components/Scenarios/Scenarios'
+import OccasionLetters from './components/OccasionLetters/OccasionLetters'
+import Quiz from './components/Quiz/Quiz'
+import GratitudeWall from './components/GratitudeWall/GratitudeWall'
 import LoveCounter from './components/Counter/LoveCounter'
 import Climax from './components/Climax/Climax'
 import FloatingParticles from './components/Particles/FloatingParticles'
@@ -18,6 +21,9 @@ const NAV_ITEMS = [
   { id: 'timeline', label: 'القصة', icon: BookOpen },
   { id: 'messages', label: 'الرسائل', icon: MessageCircle },
   { id: 'scenarios', label: 'تخيلي', icon: Sparkles },
+  { id: 'occasions', label: 'المناسبات', icon: CalendarHeart },
+  { id: 'quiz', label: 'الاختبار', icon: HelpCircle },
+  { id: 'gratitude', label: 'الشكر', icon: HeartHandshake },
   { id: 'counter', label: 'العداد', icon: Clock },
   { id: 'climax', label: 'النهاية', icon: Heart },
 ]
@@ -31,10 +37,10 @@ function Navigation() {
 
   return (
     <motion.nav
-      className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] md:w-max max-w-4xl
-                 p-1.5 md:p-2 rounded-2xl md:rounded-full bg-black/50 backdrop-blur-2xl
-                 border border-white/10 flex items-center justify-between md:justify-center gap-1 md:gap-2
-                 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+      className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1rem)] md:w-max max-w-5xl
+                 p-1 md:p-2 rounded-2xl md:rounded-full bg-black/50 backdrop-blur-2xl
+                 border border-white/10 flex items-center justify-between md:justify-center gap-0.5 md:gap-1
+                 shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-x-auto scrollbar-hide"
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -47,10 +53,10 @@ function Navigation() {
           <button
             key={item.id}
             onClick={() => scrollTo(item.id)}
-            className={`relative flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2
-                       px-3 py-1.5 md:px-5 md:py-2.5 rounded-xl md:rounded-full
-                       text-[10px] md:text-sm font-medium md:font-semibold tracking-wide
-                       whitespace-nowrap transition-all duration-300 cursor-pointer
+            className={`relative flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-1.5
+                       px-2 py-1.5 md:px-4 md:py-2.5 rounded-xl md:rounded-full
+                       text-[9px] md:text-sm font-medium md:font-semibold tracking-wide
+                       whitespace-nowrap transition-all duration-300 cursor-pointer shrink-0
                        ${isActive
                           ? 'text-gold'
                           : 'text-white/60 hover:text-white hover:bg-white/5'
@@ -144,6 +150,12 @@ function JourneyContent() {
                 <Messages />
                 <SectionDivider />
                 <Scenarios />
+                <SectionDivider />
+                <OccasionLetters />
+                <SectionDivider />
+                <Quiz />
+                <SectionDivider />
+                <GratitudeWall />
                 <SectionDivider />
                 <LoveCounter />
                 <SectionDivider />

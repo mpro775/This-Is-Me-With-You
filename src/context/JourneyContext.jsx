@@ -9,6 +9,9 @@ const initialState = {
   hookCompleted: false,
   scenarioChoices: {},
   messagesOpened: [],
+  occasionsOpened: [],
+  quizScore: 0,
+  quizCompleted: false,
   hasStartedJourney: false,
   climaxReached: false,
 }
@@ -47,6 +50,25 @@ function journeyReducer(state, action) {
         messagesOpened: state.messagesOpened.includes(action.payload)
           ? state.messagesOpened
           : [...state.messagesOpened, action.payload],
+      }
+    case 'OPEN_OCCASION':
+      return {
+        ...state,
+        occasionsOpened: (state.occasionsOpened || []).includes(action.payload)
+          ? state.occasionsOpened
+          : [...(state.occasionsOpened || []), action.payload],
+      }
+    case 'COMPLETE_QUIZ':
+      return {
+        ...state,
+        quizScore: action.payload.score,
+        quizCompleted: true,
+      }
+    case 'RESET_QUIZ':
+      return {
+        ...state,
+        quizScore: 0,
+        quizCompleted: false,
       }
     case 'REACH_CLIMAX':
       return { ...state, climaxReached: true }

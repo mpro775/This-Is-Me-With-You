@@ -1,27 +1,32 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useScrollAnimation } from '../../hooks/useScrollAnimation'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 export default function Climax() {
-  const [answered, setAnswered] = useState(false)
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.15)
+  const [answered, setAnswered] = useState(false);
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.15);
 
   const [heartPositions] = useState(() =>
     [...Array(18)].map((_, i) => {
-      const angle = (i * 20 * Math.PI) / 180
-      const radius = 70 + Math.random() * 80
+      const angle = (i * 20 * Math.PI) / 180;
+      const radius = 70 + Math.random() * 80;
       return {
         x: Math.cos(angle) * radius,
         y: Math.sin(angle) * radius - 30,
-        emoji: ['\uD83D\uDC9B', '\uD83E\uDD0D', '\u2728', '\uD83D\uDCAB'][i % 4],
+        emoji: ["\uD83D\uDC9B", "\uD83E\uDD0D", "\u2728", "\uD83D\uDCAB"][
+          i % 4
+        ],
         scale: 0.8 + Math.random() * 0.8,
         delay: i * 0.04,
-      }
-    })
-  )
+      };
+    }),
+  );
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden" id="climax">
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden"
+      id="climax"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#1a0a14] to-[#0a0a0f]" />
 
@@ -45,7 +50,7 @@ export default function Climax() {
           animate={titleVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          وصلنا إلى نهاية هذه الرحلة...
+          وصلنا لهنا... بعد كل شيء
         </motion.p>
 
         <motion.h2
@@ -54,16 +59,18 @@ export default function Climax() {
           animate={titleVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2, delay: 0.8 }}
         >
-          <span className="text-text-primary/90">لكن قصتنا</span>
+          <span className="text-text-primary/90">بعد كل اللي مرّينا فيه</span>
         </motion.h2>
 
         <motion.h2
           className="text-3xl md:text-5xl lg:text-7xl font-bold leading-relaxed mb-8"
-          initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
-          animate={titleVisible ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          animate={
+            titleVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}
+          }
           transition={{ duration: 1.2, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-shimmer">لم تنتهِ بعد</span>
+          <span className="text-shimmer">أنا ما زلت أختارك</span>
         </motion.h2>
 
         <motion.p
@@ -72,9 +79,8 @@ export default function Climax() {
           animate={titleVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 1.8 }}
         >
-          كل يوم هو صفحة جديدة... كل لحظة هي فصل جديد.
-          <br />
-          وأنا لا أريد أن أكتب أي فصل منها بدونك.
+          "مررنا بلحظات جميلة… وأيام صعبة\n" + "ضحكنا… وتعبنا… وبعدنا أحيانًا\n"
+          + "لكن الشيء الوحيد اللي ما تغيّر؟\n" + "إني في كل مرة… أرجع وأختارك"
         </motion.p>
 
         {/* Divider */}
@@ -101,7 +107,7 @@ export default function Climax() {
               transition={{ duration: 0.8, delay: 2.5 }}
             >
               <p className="text-rose-light/80 text-xl md:text-2xl font-medium glow-rose">
-                هل تكملين معي؟
+              فهل… تختارينني أنا أيضًا؟
               </p>
 
               <motion.button
@@ -117,14 +123,18 @@ export default function Climax() {
                   className="absolute inset-0 rounded-full"
                   animate={{
                     boxShadow: [
-                      '0 0 20px rgba(212, 165, 116, 0.08)',
-                      '0 0 40px rgba(212, 165, 116, 0.2)',
-                      '0 0 20px rgba(212, 165, 116, 0.08)',
+                      "0 0 20px rgba(212, 165, 116, 0.08)",
+                      "0 0 40px rgba(212, 165, 116, 0.2)",
+                      "0 0 20px rgba(212, 165, 116, 0.08)",
                     ],
                   }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 />
-                <span className="relative z-10">نعم، أكمل معك</span>
+                <span className="relative z-10">نعم… أختارك</span>
               </motion.button>
             </motion.div>
           ) : (
@@ -149,7 +159,11 @@ export default function Climax() {
                       opacity: [0, 1, 1, 0],
                       scale: [0, pos.scale, pos.scale, 0],
                     }}
-                    transition={{ duration: 2, delay: pos.delay, ease: 'easeOut' }}
+                    transition={{
+                      duration: 2,
+                      delay: pos.delay,
+                      ease: "easeOut",
+                    }}
                   >
                     {pos.emoji}
                   </motion.span>
@@ -159,11 +173,17 @@ export default function Climax() {
               {/* Main love text */}
               <motion.p
                 className="text-4xl md:text-7xl font-black text-shimmer leading-tight"
-                initial={{ scale: 0, filter: 'blur(20px)' }}
-                animate={{ scale: 1, filter: 'blur(0px)' }}
-                transition={{ delay: 0.4, duration: 1, type: 'spring', stiffness: 150, damping: 15 }}
+                initial={{ scale: 0, filter: "blur(20px)" }}
+                animate={{ scale: 1, filter: "blur(0px)" }}
+                transition={{
+                  delay: 0.4,
+                  duration: 1,
+                  type: "spring",
+                  stiffness: 150,
+                  damping: 15,
+                }}
               >
-                أحبك، هاجر
+               يا بنت قلبي… أحبك
               </motion.p>
 
               <motion.p
@@ -172,7 +192,7 @@ export default function Climax() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 1 }}
               >
-                إلى الأبد... وأكثر
+                مو بس اليوم… بل كل يوم جاي
               </motion.p>
 
               {/* Subtle expanding glow */}
@@ -180,7 +200,7 @@ export default function Climax() {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                 initial={{ width: 0, height: 0, opacity: 0 }}
                 animate={{ width: 600, height: 600, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 2, ease: 'easeOut' }}
+                transition={{ delay: 0.5, duration: 2, ease: "easeOut" }}
               >
                 <div className="w-full h-full bg-[radial-gradient(circle,rgba(212,165,116,0.06)_0%,transparent_60%)]" />
               </motion.div>
@@ -199,5 +219,5 @@ export default function Climax() {
         صُنع بكل الحب
       </motion.p>
     </section>
-  )
+  );
 }

@@ -3,15 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTypewriter } from '../../hooks/useTypewriter'
 
 const hookSequence = [
-  { text: 'في مكان ما من هذا العالم...', pause: 2000 },
-  { text: 'التقى قلبان', pause: 2000 },
-  { text: 'لم يكونا يعرفان', pause: 1500 },
-  { text: 'أن تلك اللحظة...', pause: 1800 },
-  { text: 'ستغير كل شيء', pause: 2200 },
-]
-
-const finalText = 'هذه قصتنا'
-
+  { text: 'في قاعة تدريب… يوم عادي جدًا', pause: 2000 },
+  { text: 'كنت مشغول… كعادتي', pause: 1800 },
+  { text: 'ما كنت أبحث عن أحد', pause: 1600 },
+  { text: 'لكن… دخلتِ أنتِ', pause: 2000 },
+  { text: 'ومن تلك اللحظة… انتبهت لشيء ما', pause: 2000 },
+  { text: 'شيء ما فهمته وقتها', pause: 1600 },
+  { text: 'لكنني شعرت به', pause: 1800 },
+  { text: 'وكأن كل شيء بدأ… بدون استئذان', pause: 2200 },
+  ]
+  
+const finalText = 'وهنا… لم أعد كما كنت'
 export default function HookScreen({ onComplete }) {
   const [phase, setPhase] = useState('sequence') // sequence, final, exit
   const [lineIndex, setLineIndex] = useState(0)

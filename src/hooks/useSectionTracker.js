@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const SECTIONS = ['timeline', 'messages', 'scenarios', 'counter', 'climax']
+const SECTIONS = ['timeline', 'messages', 'scenarios', 'occasions', 'quiz', 'gratitude', 'counter', 'climax']
 
 export function useSectionTracker() {
   const [activeSection, setActiveSection] = useState('timeline')
